@@ -8,4 +8,4 @@ but at some point I plan to switch it up for Elixir based API (Phoenix most like
 
 * As a user I want to be able to add a picture with its description and title [ ]
 * As a user I want to see other peoples pictures [ ]
-* As a user I want to be able to "like" a particular picture
+* As a user I want to be able to "like" a particular picture [ ]
