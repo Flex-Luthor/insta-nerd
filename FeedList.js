@@ -9,6 +9,8 @@ import React, {
   Text 
 } from 'react-native';
 
+import Realm from 'realm';
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
@@ -27,9 +29,8 @@ class FeedList extends Component {
   }
 
   componentDidMount() {
-    AsyncStorage.getItem("picUrl").then((value) => {
-      this.setState({picUrl: value})
-    }) 
+    let posts = realm.objects('Post')
+    alert(posts);
   }
 
   render() {
