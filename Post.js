@@ -1,21 +1,26 @@
 'use strict';
  
 import React, {
-  AppRegistry,
+  StyleSheet,
   Component,
-  View,
-  Text 
+  NavigatorIOS
 } from 'react-native';
 
+import PostForm from './PostForm';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1 
+  }
+});
+
 class Post extends Component {
- 
   render() {
     return (
-      <View>
-        <Text>
-          Wanna nerd out m8? 
-        </Text>
-      </View>
+      <NavigatorIOS 
+        style={styles.container}
+        initialRoute={{title: 'Post Form', component: PostForm}}
+      /> 
     );
   }
 }
