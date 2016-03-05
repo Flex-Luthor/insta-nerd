@@ -11,7 +11,7 @@ import React, {
   AsyncStorage
 } from 'react-native';
 
-import Realm from 'realm';
+import realm from './db_schema';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,12 +57,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const realm = new Realm({schema:
-  [{
-    name:'Post', 
-    properties: { titleOfPic: 'string', descOfPic: 'string', picUrl: 'string'}
-  }]
-});
 
 class PostForm extends Component {
   
@@ -89,8 +83,8 @@ class PostForm extends Component {
 
   postPicture() {
     realm.write(()=>{
-      realm.create('Post', ['test1', 'test2', 'test3']);
-    })
+      realm.create('Post', [this.state.titleOfPic, this.state.descOfPic, this.state.picUrl]);
+    });
   }
 
   render() {

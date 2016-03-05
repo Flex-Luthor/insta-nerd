@@ -9,7 +9,7 @@ import React, {
   Text 
 } from 'react-native';
 
-import Realm from 'realm';
+import realm from './db_schema';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +30,6 @@ class FeedList extends Component {
 
   componentDidMount() {
     let posts = realm.objects('Post')
-    alert(posts);
   }
 
   render() {
