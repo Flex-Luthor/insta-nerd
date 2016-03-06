@@ -85,6 +85,9 @@ class PostForm extends Component {
     realm.write(()=>{
       realm.create('Post', [this.state.titleOfPic, this.state.descOfPic, this.state.picUrl]);
       alert('Your nerd just got submitted! :)');
+      this._textInput.setNativeProps({text: ''});
+      this._textInput2.setNativeProps({text: ''});
+      this._textInput3.setNativeProps({text: ''});
     });
   }
 
@@ -93,15 +96,15 @@ class PostForm extends Component {
       <View style={styles.container}>
         <View>
           <Text style={styles.fieldLabel}>Picture Title:</Text>
-          <TextInput style={styles.searchInput} onChange={this.pictureTitleInput.bind(this)} ref="picTitle" />
+          <TextInput style={styles.searchInput} onChange={this.pictureTitleInput.bind(this)} ref={component => this._textInput = component} />
         </View>
         <View>
           <Text style={styles.fieldLabel}>Description of the picture:</Text>
-          <TextInput style={styles.searchInput} onChange={this.descriptionOfPictureInput.bind(this)} ref="picDesc" />
+          <TextInput style={styles.searchInput} onChange={this.descriptionOfPictureInput.bind(this)} ref={component => this._textInput2 = component} />
         </View>
         <View>
           <Text style={styles.fieldLabel}>Url of the picture:</Text>
-          <TextInput style={styles.searchInput} onChange={this.urlOfPictureInput.bind(this)} ref="picUrl" />
+          <TextInput style={styles.searchInput} onChange={this.urlOfPictureInput.bind(this)} ref={component => this._textInput3 = component} />
         </View>
         <TouchableHighlight style={styles.button}
           underlayColor='#f1c40f'
