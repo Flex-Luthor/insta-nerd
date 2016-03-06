@@ -84,6 +84,7 @@ class PostForm extends Component {
   postPicture() {
     realm.write(()=>{
       realm.create('Post', [this.state.titleOfPic, this.state.descOfPic, this.state.picUrl]);
+      alert('Your nerd just got submitted! :)');
     });
   }
 
@@ -92,15 +93,15 @@ class PostForm extends Component {
       <View style={styles.container}>
         <View>
           <Text style={styles.fieldLabel}>Picture Title:</Text>
-          <TextInput style={styles.searchInput} onChange={this.pictureTitleInput.bind(this)} />
+          <TextInput style={styles.searchInput} onChange={this.pictureTitleInput.bind(this)} ref="picTitle" />
         </View>
         <View>
           <Text style={styles.fieldLabel}>Description of the picture:</Text>
-          <TextInput style={styles.searchInput} onChange={this.descriptionOfPictureInput.bind(this)} />
+          <TextInput style={styles.searchInput} onChange={this.descriptionOfPictureInput.bind(this)} ref="picDesc" />
         </View>
         <View>
           <Text style={styles.fieldLabel}>Url of the picture:</Text>
-          <TextInput style={styles.searchInput} onChange={this.urlOfPictureInput.bind(this)} />
+          <TextInput style={styles.searchInput} onChange={this.urlOfPictureInput.bind(this)} ref="picUrl" />
         </View>
         <TouchableHighlight style={styles.button}
           underlayColor='#f1c40f'
