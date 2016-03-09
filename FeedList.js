@@ -65,9 +65,14 @@ class FeedList extends Component {
   }
 
   componentWillMount() {
-    let posts = realm.objects('Post')
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(posts)
+    base.listenTo('insta-nerd', {
+      context: this,
+      asArray: true,
+      then(postsData){
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(postsData)
+        });
+      }
     });
   }
 
@@ -88,8 +93,8 @@ class FeedList extends Component {
               source={{uri: post.picUrl}}
               style={styles.thumbnail} />
             <View style={styles.rightContainer}>
-              <Text style={styles.title}>{post.titleOfPic}</Text>
-              <Text style={styles.author}>{post.descOfPic}</Text>
+              <Text style={styles.title}>{post.title}</Text>
+              <Text style={styles.author}>{post.description}</Text>
             </View>
           </View>
           <View style={styles.separator} />
