@@ -11,8 +11,6 @@ import React, {
   AsyncStorage
 } from 'react-native';
 
-import realm from './db_schema';
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
@@ -82,13 +80,18 @@ class PostForm extends Component {
   }
 
   postPicture() {
-    realm.write(()=>{
-      realm.create('Post', [this.state.titleOfPic, this.state.descOfPic, this.state.picUrl]);
-      alert('Your nerd just got submitted! :)');
-      this._textInput.setNativeProps({text: ''});
-      this._textInput2.setNativeProps({text: ''});
-      this._textInput3.setNativeProps({text: ''});
-    });
+    let post = {
+      title: this.state.titleOfPic,
+      description: this.state.descOfPic,
+      picUrl: this.state.picUrl
+    }
+
+    this.props.addPost(post);
+
+    alert('Your nerd just got submitted! :)');
+    this._textInput.setNativeProps({text: ''});
+    this._textInput2.setNativeProps({text: ''});
+    this._textInput3.setNativeProps({text: ''});
   }
 
   render() {
