@@ -13,6 +13,8 @@ import React, {
 
 import realm from './db_schema';
 import PostDetail from './PostDetail';
+import Rebase from 're-base';
+let base = Rebase.createClass('https://insta-nerd.firebaseio.com/')
 
 const styles = StyleSheet.create({
   container: {
